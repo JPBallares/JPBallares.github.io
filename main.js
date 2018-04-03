@@ -44,13 +44,14 @@ function initializeUI() {
 }
 
 function updateBtn() {
+  pushButton.disabled = false;
   if (isSubscribed) {
     pushButton.textContent = 'Disable Push Messaging';
   } else {
     pushButton.textContent = 'Enable Push Messaging';
   }
 
-  pushButton.disabled = false;
+  
 }
 
 function subscribeUser() {

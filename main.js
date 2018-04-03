@@ -18,7 +18,7 @@ if ('serviceWorker' in navigator && 'PushManager' in window) {
 
 function initializeUI() {
   pushButton.addEventListener('click', function () {
-    pushButton.disabled = true;
+    pushButton.disabled = false;
     if (isSubscribed) {
       // TODO: Unsubscribe user
     } else {
@@ -44,14 +44,13 @@ function initializeUI() {
 }
 
 function updateBtn() {
-  pushButton.disabled = false;
   if (isSubscribed) {
     pushButton.textContent = 'Disable Push Messaging';
   } else {
     pushButton.textContent = 'Enable Push Messaging';
   }
 
-  
+  pushButton.disabled = false;
 }
 
 function subscribeUser() {

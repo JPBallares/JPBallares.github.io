@@ -28,6 +28,6 @@ function pushNotification(){
     });
 
     e.onclick = function () {
-        location.href = "jpballares.github.io";
+        location.href = "https://jpballares.github.io/";
     }
 }

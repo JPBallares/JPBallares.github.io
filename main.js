@@ -25,7 +25,7 @@ function pushNotification(){
         body : data.msg + "\n" + data.details,
         icon : "jpballares.github.io/images/icon-512x512.png",
         tag : "TIME-OUT"
-    })
+    });
 
     e.onclick = function () {
         location.href = "jpballares.github.io";

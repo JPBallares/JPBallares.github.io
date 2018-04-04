@@ -23,7 +23,7 @@ function pushNotification(){
 
     var e = new Notification("TEST", {
         body : data.msg + "\n" + data.details,
-        icon : "jpballares.github.io/images/icon-512x512.png",
+        icon : "/images/icon-512x512.png",
         tag : "TIME-OUT"
     });
 

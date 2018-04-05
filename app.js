@@ -21,11 +21,11 @@ function requestNotification() {
 
 function pushNotification() {
     var data = {
-        msg: "Baguio Bike Rental",
+        msg: "Time out",
         details: "One of the customer is already out of time"
     }
 
-    var e = new Notification("TEST", {
+    var e = new Notification("Baguio Bike Rental", {
         body: data.msg + "\n" + data.details,
         icon: "/images/icons/icon-512x512.png",
         tag: "TIME-OUT"
@@ -39,10 +39,11 @@ function pushNotification() {
 function rentBike(time, elementID) {
     var element = document.getElementById(elementID);
     element.innerHTML = "You have " + time + " seconds remaining";
-    if (time < 1) {
+    if (time == 0) {
         clearTimeout(timer);
         pushNotification();
+    } else {
+        time--;
+        var timer = setTimeout('rentBike(' + time + ', "' + elementID + '")', 1000);
     }
-    time--;
-    var timer = setTimeout('rentBike(' + time + ', "' + elementID + '")', 1000);
 }

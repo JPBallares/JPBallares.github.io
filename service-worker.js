@@ -1,4 +1,6 @@
 var cacheName = 'bikeRental-PWA';
+var dataCacheName = 'bikeRental-data';
+
 var filesToCache = [
   '/',
   '/index.html',

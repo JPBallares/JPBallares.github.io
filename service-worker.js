@@ -7,8 +7,7 @@ var filesToCache = [
   '/main.js',
   '/manifest.json',
   '/service-worker.js',
-  '/styles/.',
-  '/images/.'
+  '/styles/style.css.'
 ];
 
 self.addEventListener('install', function(e) {

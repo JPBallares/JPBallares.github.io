@@ -6,6 +6,7 @@ var filesToCache = [
   '/index.html',
   '/main.js',
   '/manifest.json',
+  '/rent.html',
   '/styles/style.css'
 ];
 

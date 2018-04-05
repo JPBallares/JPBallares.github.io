@@ -1,12 +1,9 @@
-importScripts('sw-toolbox.js');
-
 var cacheName = 'bikeRental-PWA';
 var filesToCache = [
   '/',
   '/index.html',
   '/main.js',
   '/manifest.json',
-  '/service-worker.js',
   '/styles/style.css.'
 ];
 

@@ -11,11 +11,14 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-window.onload = pushNotification;
+window.onload = requestNotification;
 
-function pushNotification(){
+function requestNotification(){
     Notification.requestPermission();
 
+}
+
+function pushNotification(){
     var data = {
         msg: "Hello World",
         details: "Welcome to the website"

@@ -1,10 +1,7 @@
 <?php
     session_start();
 
-
-
-    $user = 'webtech';
-    $pass = '66efd9eefecf45dd64eff8e5cb2d13e005041925';
+    
 
     if(isSet($_POST['login'])) {
 
@@ -12,15 +9,22 @@
         $username = $_POST['username'];
         $password = sha1($_POST['password'] );
 
-        if ($user == $username && $pass == $password) {
-            $_SESSION['username'] = $username;
-            $_SESSION['password'] = $password;
-
-            header('Location: /member_area.php');
-            exit;
-        } else {
-            echo 'Data does not match <br /> RE-Enter Username and Password';
+        $dataFile = fopen("users.data", "r") or die("Unable to open file!");
+        while (!feof($dataFile)){
+            list($user, $pass) = explode(',', fgets($dataFile));
+            if ($user == $username && $pass == $password) {
+                $_SESSION['username'] = $username;
+                $_SESSION['password'] = $password;
+    
+                header('Location: /member_area.php');
+                exit;
+            } else {
+                echo 'Data does not match <br /> RE-Enter Username and Password';
+            }
         }
+        fclose($dataFile);
+
+        
     } else {
 
 ?>

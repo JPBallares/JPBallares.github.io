@@ -3,10 +3,11 @@ var dataCacheName = 'bikeRental-data';
 
 var filesToCache = [
   '/',
+  '/app.js',
   '/index.html',
-  '/main.js',
   '/manifest.json',
   '/rent.html',
+  '/service-worker.js',
   '/styles/style.css'
 ];
 

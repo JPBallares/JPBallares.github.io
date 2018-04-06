@@ -16,7 +16,7 @@
                 $_SESSION['username'] = $username;
                 $_SESSION['password'] = $password;
     
-                header('Location: /manage.php');
+                header('Location: /bike-rental.php');
                 exit;
             } else {
                 echo 'Data does not match <br /> RE-Enter Username and Password';

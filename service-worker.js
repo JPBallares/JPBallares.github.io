@@ -4,6 +4,7 @@ var dataCacheName = 'bikeRental-data';
 var filesToCache = [
   '/',
   '/app.js',
+  '/bike-rental.php',
   '/index.html',
   '/login.php',
   '/logout.php',

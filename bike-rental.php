@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	if(!isset($_SESSION['username'])){
+	if(!isSet($_SESSION['username'])){
 		header("Location:login.php");
 	}
 ?>
@@ -22,7 +22,7 @@
     <div id="div1">
 
         <a href="index.php" id="home">Home</a>
-        <a href="Login.php" id="login2">Login</a>
+        <a href="login.php" id="login2">Login</a>
         <a href="register.php" id="register">Register</a>
 
 

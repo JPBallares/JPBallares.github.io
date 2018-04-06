@@ -5,10 +5,13 @@ var filesToCache = [
   '/',
   '/app.js',
   '/index.html',
+  '/login.php',
+  '/logout.php',
   '/manifest.json',
   '/rent.html',
   '/service-worker.js',
-  '/styles/style.css'
+  '/styles/style.css',
+  '/users.txt'
 ];
 
 self.addEventListener('install', function(e) {

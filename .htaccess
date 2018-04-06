@@ -4,7 +4,7 @@ RewriteEngine On
 RewriteCond %{SERVER_PORT} 80 
 RewriteRule ^(.*)$ https://bbrental.000webhostapp.com/$1 [R=301,L]
 
-<Files ~ "\.data$">
-  Order allow,deny
-  Deny from all
-</Files>
+#<Files ~ "\.data$">
+#  Order allow,deny
+#  Deny from all
+#</Files>

@@ -46,7 +46,7 @@ body {
 }
 
 #pluBu {
-	background-image: url(images/add.png);
+	background-image: url(../images/add.png);
 	background-size: contain; 
 }
 

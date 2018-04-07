@@ -24,18 +24,55 @@ body {
 
 #main-info {
 	background-color: rgba(255, 255, 255, 0.85);
-	height: 60%;
+	height: 60vh;
 	width: 100%;
 	margin-bottom: 1.5%;
 	display: flex;
+	flex-flow: column;
 }
 
 #content .information {
 	background-color: rgba(255, 255, 255, 0.6);
-	height: 55%;
+	height: 60vh;
 	padding: 1%;
 	margin-bottom: 1.5%;
-	
+}
+
+#main-info .transaction {
+	padding: 1%;
+	height: 100%;
+	display: flex;
+}
+
+.bike-container {
+	height: 100%;
+	width: 100%;
+	padding: 1% 1% -1% 1%;
+	display: flex;
+	justify-content: center;
+}
+
+.bike-container div {
+	width: 20%;
+	padding: 7% 1% 1% 1%;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: center;
+	font-family: "Josefin Sans", "Century Gothic", sans-serif;
+}
+
+.bike-container img {
+	height: 40%;
+	width: 50%;
+	border-bottom: 1px solid black;
+	padding-bottom: 1em;
+}
+
+.nay {
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 #container {
@@ -45,4 +82,8 @@ body {
 	right: 0;
 	left: 0;
 	overflow-y: scroll;
+}
+
+ol {
+	list-style: circle;
 }

@@ -1,17 +1,23 @@
 window.onload = function () {
-	var addButton = document.getElementById("pluBu");
-	var delButton = document.getElementById("delBu");
-	var listOfRents = document.getElementById("content");
+	var addButton = document.getElementById('pluBu');
+	var delButton = document.getElementById('delBu');
+	var listOfRents = document.querySelector('ul');
 	
 	addButton.onclick = function() {
-		listOfRents.innerHTML += 
-								'<div class="information" id="delete"></div>';
+		var newCon = document.createElement('li');
+		
+		newCon.innerHTML = 
+             '<div class="information">'
+            +'<div class="delete">'
+            +'<button name="del" id="delBu"></button>'
+            +'</div>'
+            +'</div>';
+		
+		listOfRents.appendChild(newCon);
+		
+		delButton = newCon.querySelector('[name=del]');
+		delButton.onclick = function(e) {
+    		e.target.closest('li').remove()
+  		}
 	}
-/*
-	delButton.onclick = function() {
-		var bye = delBu.parentNode.parentNode.id;
-		document.getElementById(bye).remove();
-		console.log(bye);
-	}
-*/
 }

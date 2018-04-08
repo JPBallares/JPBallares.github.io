@@ -79,3 +79,59 @@ body {
 	width: 0;
 	margin-left: 1em;
 }
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.m_content {
+	background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    width: 80%;
+	font-family: "Josefin Sans";
+}
+
+.close {
+	background-image: url(../images/delete.png);
+	background-color: rgb(63, 81, 181, 0.6);
+	background-size: contain; 
+	background-repeat: no-repeat;
+	border-radius: 13px;
+	float: right;
+	height: 30px;
+	width: 30px;
+}
+
+.close:hover,
+.close:focus {
+	background-color: rgb(63, 81, 181, 0.8);
+	cursor: pointer;
+}
+
+.add {
+	background-image: url(../images/add.png);
+	background-color: rgb(63, 81, 181, 0.6);
+	background-size: contain; 
+	background-repeat: no-repeat;
+	border-radius: 13px;
+	float: right;
+	height: 30px;
+	width: 30px;
+	margin: 0 1em 0 1em;
+}
+
+.add:hover,
+.add:focus {
+	background-color: rgb(63, 81, 181, 0.8);
+	cursor: pointer;
+}

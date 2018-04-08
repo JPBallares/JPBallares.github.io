@@ -8,7 +8,6 @@ var filesToCache = [
     '/manifest.json',
     '/rent.html',
     '/service-worker.js',
-    '/styles/style.css',
     '/styles/index.css',
     '/styles/layout.css',
     '/images/add.png',

@@ -36,8 +36,23 @@
 		<div id="modal-0" class="modal">
 			<div class="m_content">
 				<span class="close"></span>
-				<span id="add-c" class="add"></span>
-				<p>test</p>
+				<span type="submit" id="add-c" class="add"></span>
+				
+				<form role="form" onsubmit="addCustomer()">
+                  	<div class="form-group">
+                    	<label>Name</label>
+                    	<input type="text" id = 'name' class="form-control"placeholder="Name">
+                  	</div>
+                  	<div class="form-group">
+						<label>Adult or Kiddie</label>
+                    	<input type="text" id = 'aok' class="form-control"placeholder="Adult or Kiddie">
+                  	</div>
+                  	<div class="form-group">
+                    	<label>Minutes</label>
+                    	<input type="text" id = 'minutes' class="form-control"placeholder="Minutes">
+                 	</div>
+            	</form>
+				
 			</div>
 		</div>
 

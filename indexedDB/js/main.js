@@ -72,7 +72,11 @@ function showCustomers(e) {
             output += "</tr>";
             cursor.continue();
         }
+
+        if (document.getElementById("customers")){
             document.getElementById("customers").innerHTML = output;
+        }
+            
     };
 }
 

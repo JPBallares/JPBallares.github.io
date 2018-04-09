@@ -110,3 +110,25 @@ function removeCustomer(id){
     
 }
 
+function countDownTimer(e) {
+    var transaction = db.transaction(["customers"], "readwrite");
+    var store = transaction.objectStore("customers");
+    
+    store.openCursor().onsuccess = function (e) {
+        var cursor = e.target.result;
+        if (cursor) {
+            var updateData = cursor.value;
+
+            updateData.minutes -= 1;
+            var request = cursor.update(updateData);
+            request.onsuccess = function() {
+                console.log('Success!');
+            };
+            cursor.continue();
+        }
+
+        showCustomers();
+            
+    };
+}
+

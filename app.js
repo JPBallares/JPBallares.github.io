@@ -4,6 +4,7 @@ if ('serviceWorker' in navigator) {
             function (registration) {
                 // Registration was successful
                 console.log('ServiceWorker registration successful with scope: ', registration.scope);
+
             },
             function (err) {
                 // registration failed :(
@@ -11,6 +12,7 @@ if ('serviceWorker' in navigator) {
             });
     });
 }
+
 
 window.onload = requestNotification;
 
@@ -20,20 +22,23 @@ function requestNotification() {
 }
 
 function pushNotification() {
-    var data = {
-        msg: "Time out",
-        details: "One of the customer is already out of time"
-    }
-
-    var e = new Notification("Baguio Bike Rental", {
-        body: data.msg + "\n" + data.details,
-        icon: "/images/icons/icon-512x512.png",
-        tag: "TIME-OUT"
+    Notification.requestPermission(function (result) {
+        if (result === 'granted') {
+            navigator.serviceWorker.ready.then(function (registration) {
+                var data = {
+                    msg: "Time out",
+                    details: "One of the customer is already out of time"
+                }
+    
+    
+                registration.showNotification("Baguio Bike Rental", {
+                    body: data.msg + "\n" + data.details,
+                    icon: "/images/icons/icon-512x512.png",
+                    tag: "TIME-OUT"
+                });
+            });
+        }
     });
-
-    e.onclick = function () {
-        location.href = "https://bbrental.000webhostapp.com/";
-    }
 }
 
 function rentBike(time, elementID) {

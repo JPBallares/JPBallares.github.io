@@ -1,3 +1,7 @@
+window.onload = function () {
+    Notification.requestPermission();
+};
+
 var cacheName = 'bikeRental-PWA';
 
 var filesToCache = [

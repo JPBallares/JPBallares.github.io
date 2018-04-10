@@ -4,23 +4,17 @@ if ('serviceWorker' in navigator) {
             function (registration) {
                 // Registration was successful
                 console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                pushNotification();
             },
             function (err) {
                 // registration failed :(
                 console.log('ServiceWorker registration failed: ', err);
             });
-            
+
     });
 }
 
 
-window.onload = requestNotification;
 
-function requestNotification() {
-    Notification.requestPermission();
-
-}
 
 function pushNotification() {
     Notification.requestPermission(function (result) {
@@ -30,8 +24,8 @@ function pushNotification() {
                     msg: "Time out",
                     details: "One of the customer is already out of time"
                 }
-    
-    
+
+
                 registration.showNotification("Baguio Bike Rental", {
                     body: data.msg + "\n" + data.details,
                     icon: "/images/icons/icon-512x512.png",

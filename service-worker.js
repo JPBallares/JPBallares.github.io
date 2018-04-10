@@ -62,3 +62,27 @@ self.addEventListener('fetch', function (e) {
         })
     );
 });
+
+self.addEventListener('notificationclick', function (e) {
+    console.log('On notification click: ', e.notification.tag);
+    e.notification.close();
+
+    // This looks to see if the current is already open and
+    // focuses if it is
+    e.waitUntil(clients.matchAll({
+        type: "window"
+    }).then(function (clientList) {
+        let clientMatched = null;
+
+        for (var i = 0; i < clientList.length; i++) {
+            var client = clientList[i];
+            if (client.url === '/indexedDB/') {
+                return client.focus();
+            }
+        }
+        if (clients.openWindow) {
+            return clients.openWindow('/indexedDB/');
+        }
+
+    }));
+});

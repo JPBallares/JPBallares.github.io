@@ -4,12 +4,13 @@ if ('serviceWorker' in navigator) {
             function (registration) {
                 // Registration was successful
                 console.log('ServiceWorker registration successful with scope: ', registration.scope);
-
+                pushNotification();
             },
             function (err) {
                 // registration failed :(
                 console.log('ServiceWorker registration failed: ', err);
             });
+            
     });
 }
 

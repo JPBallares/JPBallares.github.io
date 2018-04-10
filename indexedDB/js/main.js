@@ -140,7 +140,7 @@ function countDownTimer(e) {
                 request.onsuccess = function () {
                     console.log('Success!');
                 };
-            } 
+            }
             cursor.continue();
 
         }
@@ -154,21 +154,25 @@ function rentBike() {
     timer = setInterval('countDownTimer()', 1000);
 }
 
+
+
 function pushNotification(name) {
     Notification.requestPermission(function (result) {
         if (result === 'granted') {
             navigator.serviceWorker.ready.then(function (registration) {
+
                 var data = {
                     msg: "Time out",
                     details: "One of the customer didn't return the bike yet. Customer name: " + name
                 }
-    
-    
+
+
                 registration.showNotification("Baguio Bike Rental", {
                     body: data.msg + "\n" + data.details,
                     icon: "/images/icons/icon-512x512.png",
                     // tag: "TIME-OUT"
                 });
+
             });
         }
     });

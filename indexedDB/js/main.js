@@ -127,8 +127,9 @@ function countDownTimer(e) {
         var cursor = e.target.result;
         if (cursor) {
             var updateData = cursor.value;
-            if (updateData.minutes) {
+            if (!updateData.minutes) {
                 clearInterval(timer);
+                pushNotification();
             } else {
                 updateData.minutes -= 1;
                 var request = cursor.update(updateData);

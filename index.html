@@ -1,124 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="theme-color" content="#2196f3">
-    <title>Baguio Bike Rental</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="images/icons/icon-512x512.png">
-    <link rel="manifest" href="manifest.json">
-    <script src="app.js" async></script>
-
-	<link rel="stylesheet" type="text/css" href="styles/layout.css">
-	<link rel="stylesheet" type="text/css" href="styles/index.css">
-	<link rel="stylesheet" type="text/css" href="styles/fonts/fonts.css">
-	<script src="index.js" async></script>
-</head>
+    <meta charset="UTF-8">
+    <title>Bike Management</title>
+    <link rel="stylesheet" href="css/style.css"> </head>
 
 <body>
+    <header> </header>
     <div id="container">
-        <div id="header">
-			<div id="logo">
-				<img src="images/logo.png" alt="logo">
-			</div>
-			
-            <div id="title">
-				:P
-			</div>
-			
-			<div id="g-button">
-				<button id="pluBu"></button>
-			</div>
-        </div>
-		
-		<div id="modal-0" class="modal">
-			<div class="m_content">
-				<span class="close"></span>
-				<span type="submit" id="add-c" class="add"></span>
-				
-				<form role="form" onsubmit="addCustomer()">
-                  	<div class="form-group">
-                    	<label>Name</label>
-                    	<input type="text" id = 'name' class="form-control"placeholder="Name">
-                  	</div>
-                  	<div class="form-group">
-						<label>Adult or Kiddie</label>
-                    	<input type="text" id = 'aok' class="form-control"placeholder="Adult or Kiddie">
-                  	</div>
-                  	<div class="form-group">
-                    	<label>Minutes</label>
-                    	<input type="text" id = 'minutes' class="form-control"placeholder="Minutes">
-                 	</div>
-            	</form>
-				
-			</div>
-		</div>
-
-        <div id="content">	
-			<div id="main-info">
-			<div class="transaction">
-				<h1>Information</h1>
-				<div class="bike-container">
-					<div>
-						<img src="images/logo.png"><br>
-						Bike A
-						<ol>
-							<li></li>
-							<li></li>
-							<li></li>
-						</ol>
-					</div>
-					
-					<div>
-						<img src="images/logo.png"><br>
-						Bike B
-						<ol>
-							<li></li>
-							<li></li>
-							<li></li>
-						</ol>
-					</div>
-					
-					<div>
-						<img src="images/logo.png"><br>
-						Bike C
-						<ol>
-							<li></li>
-							<li></li>
-							<li></li>
-						</ol>
-					</div>
-					
-					<div>
-						<img src="images/logo.png"><br>
-						Bike D
-						<ol>
-							<li></li>
-							<li></li>
-							<li></li>
-						</ol>
-					</div>
-					
-					<div>
-						<img src="images/logo.png"><br>
-						Bike E
-						<ol>
-							<li></li>
-							<li></li>
-							<li></li>
-						</ol>
-					</div>
-				</div>
-			</div>
-			</div>
-			
-			<ul class="nay">
-				
-			</ul>
+        <div class="navT">
+            <div class="icon"> </div>
         </div>
     </div>
+    <div id="menu">
+        <ul>
+            <li><a href="index.html">Home<span class="space"></span></a></li>
+            <li><a href="bike.html">Bikes<span class="space"></span></a></li>
+            <li><a href="about.html">About<span class="space"></span></a></li>
+        </ul>
+    </div>
+    <div class='content'>
+        <div id="first">
+            <h1> Burnham Park</h1>
+            <h2>The Heart of Baguio City</h2> <img class="burnham" src="images/burnham.jpg" width="80%"> </div>
+        <div id="second">
+            <h1>Ride a Bike at Burnham Park</h1>
+            <h2>ENJOY         RELAX         LOVE</h2>
+            <p>Aside from its nippy climate, the city’s charm lies in its many offerings—there always seems to be something new in every visit!Spend your vacation in Burnham Park and experience more than just sightseeing and selfies in the summer capital.</p>
+            <div id="bar"> <img class="bi" src="images/BIKE.jpg"> </div>
+        </div>
+        <div id="third">
+            <h2></h2>
+            <h5></h5>
+            <div id="map-canvas"></div>
+        </div>
+    </div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>

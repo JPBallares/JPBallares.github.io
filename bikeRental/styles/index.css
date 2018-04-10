@@ -187,7 +187,12 @@ body {
 	font-size: 4vw;
 }
 
-@media screen and (max-width: 380px), screen and (max-height: 660px) ,screen and (max-width: 770px), screen and (max-height: 1024px) {
+.bike {
+	border-style: none;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+@media screen and (max-width: 380px), screen and (max-height: 660px) {
 	.client-info {
 		font-size: 6vw;
 	}

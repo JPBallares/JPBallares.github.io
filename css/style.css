@@ -256,4 +256,12 @@ p {
     height: 200px;
     margin: 0 auto;
     border: 1px dashed white;
+    overflow: hidden;
+}
+
+.bi {
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: -50%;
 }

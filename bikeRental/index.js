@@ -7,6 +7,7 @@ request.onupgradeneeded = function (e) {
         os.createIndex('name', 'name', { unique: false });
         os.createIndex('aok', 'aok', { unique: false });
         os.createIndex('minutes', 'minutes', { unique: false });
+		os.createIndex('tob', 'tob', {unique: false});
     }
 };
 
@@ -30,14 +31,16 @@ addButton.onclick = function() {
 	var name = document.getElementById('name').value;
 	var aok = document.getElementById('aok').value;
 	var minutes = document.getElementById('minutes').value;
+	var tob = document.getElementById('tob').value;
+	
 	var transaction = db.transaction(["customers"], "readwrite");
 	var store = transaction.objectStore("customers");
 	var customer = {
 		name: name,
 		aok: aok,
-		minutes: minutes
+		minutes: minutes,
+		tob: tob
 	};
-
 
 	request = store.add(customer);
 
@@ -52,14 +55,21 @@ addButton.onclick = function() {
 	};
 
 	var newCon = document.createElement('li');
-
+	
 	newCon.innerHTML = 
 		 '<div class="information">'
 		+'<div class="delete">'
 		+'<button name="del" id="delBu"></button>'
-		+'<br><p>Name: '+name+'</p>'
-		+'<br><p>Type: '+aok+'</p>'
-		+'<br><p>Minutes: '+minutes+'</p>'
+		+'<div class="rent-info">'
+		+'<div class="rent-info-left">'
+		+'<p class="client-info">Name: '+name+'</p>'
+		+'<p class="client-info">Type: '+aok+'</p>'
+		+'<p class="client-info">Bike: '+tob+'</p>'
+		+'</div>'
+		+'<div class="rent-info-right">'
+		+'<div class="time">'+minutes+'</div>'
+		+'</div>'
+		+'</div>'
 		+'</div>'
 		+'</div>';
 

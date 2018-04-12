@@ -26,7 +26,7 @@
 			</div>
 			
             <div id="title">
-				:P
+				Baguio Bike Rental
 			</div>
 			
 			<div id="g-button">
@@ -47,12 +47,23 @@
                     	<input type="text" id = 'name' class="form-control" placeholder="Name">
                   	</div>
                   	<div class="form-group">
-						<label class="form_field">Type</label>
-                    	<input type="text" id = 'aok' class="form-control" placeholder="Adult or Kiddie">
+						<label class="form_field">Bike Size</label>
+						<select id = "aok" class="form-control">
+							<option value="Kiddie">Kiddie</option>
+							<option value="Adult">Adult</option>
+						</select>
                   	</div>
                   	<div class="form-group">
-                    	<label class="form_field">Duration</label>
-                    	<input type="text" id = 'minutes' class="form-control" placeholder="Minutes">
+						<label class="form_field">Duration</label>
+						<select id="minutes" class="form-control">
+							<option value="30">30 Minutes</option>
+							<option value="60">1 Hour</option>
+							<option value="90">1 Hr 30 Min</option>
+							<option value="120">2 Hours</option>
+							<option value="120">2 Hrs 30 Min</option>
+							<option value="120">3 Hours</option>
+						</select>
+                    	<!-- <input type="text" id = 'minutes' class="form-control" placeholder="Minutes"> -->
                  	</div>
 					<div class="form-group">
                     	<label class="form_field">Type of Bike</label>

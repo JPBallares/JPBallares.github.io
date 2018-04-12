@@ -188,7 +188,7 @@ body {
 }
 
 .bike {
-	border-style: none;
+	border: none;
 	background-color: rgba(0, 0, 0, 0);
 }
 

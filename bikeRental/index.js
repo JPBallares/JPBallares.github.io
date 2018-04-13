@@ -300,3 +300,48 @@ function pad(num, size) {
 	return s;
 }
 
+function earningToday() {
+	var transaction = db.transaction(["customers"], "readwrite");
+	var store = transaction.objectStore("customers");
+	var totalIncome = 0;
+	store.openCursor().onsuccess = function (e) {
+		var cursor = e.target.result;
+		if (cursor) {
+			var curVal = cursor.value;
+
+			if (curVal.date.toLocaleDateString() == (new Date()).toLocaleDateString()) {
+				totalIncome += curVal.amount;
+
+			}
+
+			cursor.continue();
+
+		}
+
+		alert('Total Income for today : ' + totalIncome);
+	}
+
+}
+
+function earningMonth() {
+	var transaction = db.transaction(["customers"], "readwrite");
+	var store = transaction.objectStore("customers");
+	var totalIncome = 0;
+	store.openCursor().onsuccess = function (e) {
+		var cursor = e.target.result;
+		if (cursor) {
+			var curVal = cursor.value;
+			var today = new Date();
+			if (curVal.date.getMonth() == today.getMonth() && curVal.date.getFullYear() == today.getFullYear()) {
+				totalIncome += curVal.amount;
+
+			}
+
+			cursor.continue();
+
+		}
+
+		alert('Total Income for this month : ' + totalIncome);
+	}
+
+}

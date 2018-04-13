@@ -41,7 +41,7 @@ request.onupgradeneeded = function (e) {
 		os.createIndex('date', 'date', {
 			unique: false
 		});
-        os.createIndex('amount', 'amount', {
+		os.createIndex('amount', 'amount', {
 			unique: false
 		});
 	}
@@ -70,6 +70,7 @@ addButton.onclick = function () {
 	var time = new Date((document.getElementById('time').value) * 60000 + Date.now());
 	var date = new Date();
 	var tob = document.getElementById('tob').value;
+	var amount = document.getElementById('amount').value;
 
 	var transaction = db.transaction(["customers"], "readwrite");
 	var store = transaction.objectStore("customers");
@@ -78,7 +79,8 @@ addButton.onclick = function () {
 		aok: aok,
 		time: time,
 		date: date,
-		tob: tob
+		tob: tob,
+		amount: amount
 	};
 
 	request = store.add(customer);
@@ -161,6 +163,7 @@ function showCustomer(e) {
 					'<p class="client-info">Type: ' + cursor.value.aok + '</p>' +
 					'<p class="client-info">Bike: ' + tobDisplay + '</p>' +
 					'<p class="client-info">Date: ' + cursor.value.date.toLocaleDateString() + '/' + cursor.value.date.toLocaleTimeString() + '</p>' +
+					'<p class="client-info">Bike: ' + cursor.value.amount + '</p>' +
 					'</div>' +
 					'<div class="rent-info-right">' +
 					'<div class="time">' + outputTime + '</div>' +
@@ -196,12 +199,12 @@ function delRem(e, elements) {
 	request.onsuccess = function (e) {
 		console.log("Deleted customer " + elements);
 		alert("Deleted customer " + elements);
-	}
+	};
 
 	request.onerror = function (e) {
 		console.log("Failed to delete customer " + elements);
 		alert("Failed to delete customer" + elements);
-	}
+	};
 
 }
 
@@ -230,7 +233,7 @@ function returnBike(e, elements) {
 		showCustomer();
 
 
-	}
+	};
 }
 
 //timer and push notification
@@ -310,16 +313,17 @@ function earningToday() {
 			var curVal = cursor.value;
 
 			if (curVal.date.toLocaleDateString() == (new Date()).toLocaleDateString()) {
-				totalIncome += curVal.amount;
+				totalIncome += parseInt(curVal.amount);
 
 			}
 
 			cursor.continue();
 
+		} else {
+			alert('Total Income for today : ' + totalIncome);
 		}
 
-		alert('Total Income for today : ' + totalIncome);
-	}
+	};
 
 }
 
@@ -333,15 +337,18 @@ function earningMonth() {
 			var curVal = cursor.value;
 			var today = new Date();
 			if (curVal.date.getMonth() == today.getMonth() && curVal.date.getFullYear() == today.getFullYear()) {
-				totalIncome += curVal.amount;
+				totalIncome += parseInt(curVal.amount);
+
 
 			}
 
 			cursor.continue();
-
+		} else {
+			alert('Total Income for this month : ' + totalIncome);
 		}
 
-		alert('Total Income for this month : ' + totalIncome);
-	}
+
+	};
+
 
 }

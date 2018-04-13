@@ -45,6 +45,22 @@ body {
 	align-items: center;
 }
 
+.earning {
+	height: 100%;
+	padding: 0 1em 0 1em;
+	float: right;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+.earning button:hover{
+	color: white;
+	cursor: pointer;
+	font-weight: bold;
+}
+
 #pluBu {
 	background-image: url(../images/add.png);
 	background-size: contain; 

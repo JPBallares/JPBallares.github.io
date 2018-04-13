@@ -4,6 +4,7 @@ if ('serviceWorker' in navigator) {
 			function (registration) {
 				// Registration was successful
 				console.log('ServiceWorker registration successful with scope: ', registration.scope);
+				Notification.requestPermission();
 			},
 			function (err) {
 				// registration failed :(
@@ -13,6 +14,8 @@ if ('serviceWorker' in navigator) {
 	});
 }
 
+// timer = null;
+// window.onload = rentBike();
 
 var request = indexedDB.open('BikeManager', 1);
 
@@ -29,7 +32,7 @@ request.onupgradeneeded = function (e) {
 		os.createIndex('aok', 'aok', {
 			unique: false
 		});
-		os.createIndex('minutes', 'minutes', {
+		os.createIndex('time', 'time', {
 			unique: false
 		});
 		os.createIndex('tob', 'tob', {
@@ -57,7 +60,8 @@ var span = document.getElementsByClassName("close")[0];
 addButton.onclick = function () {
 	var name = document.getElementById('name').value;
 	var aok = document.getElementById('aok').value;
-	var minutes = document.getElementById('minutes').value;
+	var time = new Date((document.getElementById('time').value)*60000 + Date.now());
+	var date = new Date();
 	var tob = document.getElementById('tob').value;
 
 	var transaction = db.transaction(["customers"], "readwrite");
@@ -65,7 +69,8 @@ addButton.onclick = function () {
 	var customer = {
 		name: name,
 		aok: aok,
-		minutes: minutes,
+		time: time,
+		date: date,
 		tob: tob
 	};
 
@@ -85,20 +90,26 @@ addButton.onclick = function () {
 	var tobDisplay;
 	switch (tob) {
 		case 1:
-			tobDisplay = "Bike A"
+			tobDisplay = "Bike A";
 			break;
 		case 2:
-			tobDisplay = "Bike B"
+			tobDisplay = "Bike B";
 			break;
 		case 3:
-			tobDisplay = "Bike C"
+			tobDisplay = "Bike C";
 			break;
 		case 4:
-			tobDisplay = "Bike D"
+			tobDisplay = "Bike D";
 			break;
 		case 5:
-			tobDisplay = "Bike E"
+			tobDisplay = "Bike E";
 			break;
+	}
+	var outputTime;
+	if (time > 0){
+		outputTime = Math.floor((time.getTime() - Date.now())/60000) + ":" + Math.floor(((time.getTime() - Date.now())%60000)/1000);
+	} else {
+		outputTime = time;
 	}
 
 	newCon.innerHTML =
@@ -109,10 +120,11 @@ addButton.onclick = function () {
 		'<div class="rent-info-left">' +
 		'<p class="client-info">Name: ' + name + '</p>' +
 		'<p class="client-info">Type: ' + aok + '</p>' +
-		'<p class="client-info">Bike: ' + tobDisplay + '</p>' +
+		'<p class="client-info">Bike: ' + tob + '</p>' +
+		'<p class="client-info">Date: ' + date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes() + '</p>' +
 		'</div>' +
 		'<div class="rent-info-right">' +
-		'<div class="time">' + minutes + '</div>' +
+		'<div class="time">' + outputTime + '</div>' +
 		'</div>' +
 		'</div>' +
 		'</div>' +
@@ -141,3 +153,62 @@ window.onclick = function (event) {
 		modal.style.display = "none";
 	}
 }
+
+//timer and push notification
+// function countDownTimer(e) {
+//     var transaction = db.transaction(["customers"], "readwrite");
+//     var store = transaction.objectStore("customers");
+
+//     store.openCursor().onsuccess = function (e) {
+//         var cursor = e.target.result;
+//         if (cursor) {
+//             var updateData = cursor.value;
+//             if (updateData.time > 0){
+//                 if ((updateData.time.getTime()) <= Date.now()) {
+//                     updateData.time = "Not yet returned";
+//                     pushNotification(updateData.name);
+//                     var request = cursor.update(updateData);
+//                     request.onsuccess = function () {
+//                         console.log('Success!');
+//                     };
+//                 } 
+//             }
+            
+//             cursor.continue();
+
+//         }
+
+//         showCustomers();
+
+//     };
+// }
+
+// function rentBike() {
+    
+//     if (!timer){
+//         timer = setInterval('countDownTimer()', 1000);
+//     }
+    
+// }
+
+
+
+// function pushNotification() {
+//     Notification.requestPermission(function (result) {
+//         if (result === 'granted') {
+//             navigator.serviceWorker.ready.then(function (registration) {
+//                 var data = {
+//                     msg: "Time out",
+//                     details: "One of the customer is already out of time"
+//                 }
+    
+    
+//                 registration.showNotification("Baguio Bike Rental", {
+//                     body: data.msg + "\n" + data.details,
+//                     icon: "/images/icons/icon-512x512.png",
+//                     tag: "TIME-OUT"
+//                 });
+//             });
+//         }
+//     });
+// }

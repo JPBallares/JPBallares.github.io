@@ -149,7 +149,7 @@ function showCustomer(e){
 		'<li class="contentent">' +
 		'<div class="information">' +
 		'<div class="delete">' +
-		'<button name="del" id="delBu" onclick="delRem(this)"></button>' +
+		'<button name="del" id="delBu" onclick="delRem(this,'+cursor.value.id+')"></button>' +
 		'<div class="rent-info">' +
 		'<div class="rent-info-left">' +
 		'<p class="client-info">Name: ' + cursor.value.name + '</p>' +
@@ -179,8 +179,21 @@ function showCustomer(e){
 	
 }
 
-function delRem(e) {
+function delRem(e, elements) {
 	e.parentNode.parentNode.parentNode.removeChild(e.parentNode.parentNode);
+	var transaction = db.transaction(["customers"], "readwrite");
+    var store = transaction.objectStore("customers");
+
+    var request = store.delete(elements);
+
+    request.onsuccess = function (e) {
+        console.log("Deleted " + elements);
+    }
+
+    request.onerror = function (e) {
+        console.log("Failed to delete " + elements);
+    }
+	
 }
 //timer and push notification
 // function countDownTimer(e) {

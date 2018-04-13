@@ -17,7 +17,6 @@ var filesToCache = [
     '/bikeRental/sw.js',
     '/css/style.css',
     '/images/placeholder.png',
-    '/images/BIKE.jpg',
     '/images/burnham.jpg',
     '/images/logo.png',
     '/images/iconbike.jpg',
@@ -31,6 +30,20 @@ var filesToCache = [
     '/manifest.json',
     '/offline.html',
     '/service-worker.js',
+	'/images/bike.jpg',
+	'/images/bikes/bmx.jpg',
+	'/images/bikes/chopper.jpg',
+	'/images/bikes/fatbike.jpg',
+	'/images/bikes/grandtour.jpg',
+	'/images/bikes/mtbike.jpg',
+	'/images/bikes/quadracycle.jpg',
+	'/images/bikes/safari.jpg',
+	'/images/bikes/sidecar.jpg',
+	'/images/bikes/tandem.jpg',
+	'/images/bikes/trike1seater.jpg',
+	'/images/bikes/trike2seater.jpg',
+	'bike.html',
+	
 ];
 
 self.addEventListener('install', function (e) {

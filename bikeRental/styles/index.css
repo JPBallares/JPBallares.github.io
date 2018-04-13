@@ -179,12 +179,12 @@ body {
 	height: auto;
 	width: auto;
 	padding: 0 15px 0 15px;
-	font-size: 21vw; 
+	font-size: 18vw; 
 }
 
 .client-info {
 	font-family: "Josefin Sans", "Century Gothic", sans-serif;
-	font-size: 4vw;
+	font-size: 3vw;
 }
 
 .bike {

@@ -29,6 +29,7 @@ body {
 	margin-bottom: 1.5%;
 	display: flex;
 	flex-flow: column;
+	flex-wrap: wrap;
 }
 
 #content .information {
@@ -91,6 +92,7 @@ ol {
 .rent-info {
 	display: flex;
 	flex-flow: row;
+	flex-wrap: wrap;
 	padding: 0 2em 0 4em;
 }
 
@@ -111,7 +113,8 @@ ol {
 	align-items: center;
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 780px) {
+	
 	.bike-container img {
 		height: 90px;
 		width: 90px;

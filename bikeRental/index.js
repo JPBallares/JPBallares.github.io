@@ -38,12 +38,16 @@ request.onupgradeneeded = function (e) {
 		os.createIndex('tob', 'tob', {
 			unique: false
 		});
+		os.createIndex('date', 'date', {
+			unique: false
+		});
 	}
 };
 
 request.onsuccess = function (e) {
 	console.log("Successfully opened");
 	db = e.target.result;
+	showCustomer();
 };
 
 request.onerror = function (e) {
@@ -86,57 +90,7 @@ addButton.onclick = function () {
 		console.log('Data was not added', e.target.error.name);
 	};
 
-	var newCon = document.createElement('li');
-	var tobDisplay;
-	switch (tob) {
-		case 1:
-			tobDisplay = "Bike A";
-			break;
-		case 2:
-			tobDisplay = "Bike B";
-			break;
-		case 3:
-			tobDisplay = "Bike C";
-			break;
-		case 4:
-			tobDisplay = "Bike D";
-			break;
-		case 5:
-			tobDisplay = "Bike E";
-			break;
-	}
-	var outputTime;
-	if (time > 0){
-		outputTime = Math.floor((time.getTime() - Date.now())/60000) + ":" + Math.floor(((time.getTime() - Date.now())%60000)/1000);
-	} else {
-		outputTime = time;
-	}
-
-	newCon.innerHTML =
-		'<div class="information">' +
-		'<div class="delete">' +
-		'<button name="del" id="delBu"></button>' +
-		'<div class="rent-info">' +
-		'<div class="rent-info-left">' +
-		'<p class="client-info">Name: ' + name + '</p>' +
-		'<p class="client-info">Type: ' + aok + '</p>' +
-		'<p class="client-info">Bike: ' + tob + '</p>' +
-		'<p class="client-info">Date: ' + date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes() + '</p>' +
-		'</div>' +
-		'<div class="rent-info-right">' +
-		'<div class="time">' + outputTime + '</div>' +
-		'</div>' +
-		'</div>' +
-		'</div>' +
-		'</div>';
-
-	listOfRents.appendChild(newCon);
-
-	delButton = newCon.querySelector('[name=del]');
-	delButton.onclick = function (e) {
-		e.target.closest('li').remove()
-	}
-
+	showCustomer();
 	modal.style.display = "none";
 }
 
@@ -154,6 +108,93 @@ window.onclick = function (event) {
 	}
 }
 
+//showcustomer
+function showCustomer(e){
+	var content = '';
+	var transaction = db.transaction(["customers"], "readonly");
+
+    var store = transaction.objectStore("customers");
+    var index = store.index('name');
+	
+	index.openCursor().onsuccess = function (e) {
+        var cursor = e.target.result;
+        if (cursor) {
+
+	var tobDisplay;
+	switch (cursor.value.tob) {
+		case 1:
+			tobDisplay = "Bike A";
+			break;
+		case 2:
+			tobDisplay = "Bike B";
+			break;
+		case 3:
+			tobDisplay = "Bike C";
+			break;
+		case 4:
+			tobDisplay = "Bike D";
+			break;
+		case 5:
+			tobDisplay = "Bike E";
+			break;
+	}
+	var outputTime;
+	if (cursor.value.time > 0){
+		outputTime = Math.floor((cursor.value.time.getTime() - Date.now())/60000) + ":" + Math.floor(((cursor.value.time.getTime() - Date.now())%60000)/1000);
+	} else {
+		outputTime = cursor.value.time;
+	}
+	
+	content +=
+		'<li class="contentent">' +
+		'<div class="information">' +
+		'<div class="delete">' +
+		'<button name="del" id="delBu" onclick="delRem(this,'+cursor.value.id+')"></button>' +
+		'<div class="rent-info">' +
+		'<div class="rent-info-left">' +
+		'<p class="client-info">Name: ' + cursor.value.name + '</p>' +
+		'<p class="client-info">Type: ' + cursor.value.aok + '</p>' +
+		'<p class="client-info">Bike: ' + cursor.value.tob + '</p>' +
+		'<p class="client-info">Date: ' + cursor.value.date.toLocaleDateString() + '/' + cursor.value.date.toLocaleTimeString() + '</p>' +
+		'</div>' +
+		'<div class="rent-info-right">' +
+		'<div class="time">' + outputTime + '</div>' +
+		'</div>' +
+		'</div>' +
+		'</div>' +
+		'</div>' +
+		'</li>';
+		
+	cursor.continue();
+	}
+		
+	if (document.getElementById('custlist')){
+		document.getElementById('custlist').innerHTML = content;
+		console.log(content);
+	}
+		
+	};
+	
+		
+	
+}
+
+function delRem(e, elements) {
+	e.parentNode.parentNode.parentNode.removeChild(e.parentNode.parentNode);
+	var transaction = db.transaction(["customers"], "readwrite");
+    var store = transaction.objectStore("customers");
+
+    var request = store.delete(elements);
+
+    request.onsuccess = function (e) {
+        console.log("Deleted " + elements);
+    }
+
+    request.onerror = function (e) {
+        console.log("Failed to delete " + elements);
+    }
+	
+}
 //timer and push notification
 // function countDownTimer(e) {
 //     var transaction = db.transaction(["customers"], "readwrite");

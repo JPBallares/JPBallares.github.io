@@ -117,7 +117,6 @@ window.onclick = function (event) {
 //showcustomer
 function showCustomer(e) {
 	var content = '';
-	var tobDisplay;
 	var outputTime;
 	var transaction = db.transaction(["customers"], "readonly");
 
@@ -128,24 +127,7 @@ function showCustomer(e) {
 		var cursor = e.target.result;
 		if (cursor) {
 			if (!(cursor.value.time == 'Returned')) {
-				switch (parseInt(cursor.value.tob)) {
-					case 1:
-						tobDisplay = "Bike A";
-						break;
-					case 2:
-						tobDisplay = "Bike B";
-						break;
-					case 3:
-						tobDisplay = "Bike C";
-						break;
-					case 4:
-						tobDisplay = "Bike D";
-						break;
-					case 5:
-						tobDisplay = "Bike E";
-						break;
-				}
-
+				
 				if (cursor.value.time > 0) {
 					outputTime = Math.floor((cursor.value.time.getTime() - Date.now()) / 60000) + ":" + pad(Math.floor(((cursor.value.time.getTime() - Date.now()) % 60000) / 1000), 2);
 				} else {
@@ -162,9 +144,9 @@ function showCustomer(e) {
 					'<div class="rent-info-left">' +
 					'<p class="client-info">Name: ' + cursor.value.name + '</p>' +
 					'<p class="client-info">Type: ' + cursor.value.aok + '</p>' +
-					'<p class="client-info">Bike: ' + tobDisplay + '</p>' +
+					'<p class="client-info">Bike: ' + cursor.value.tob + '</p>' +
 					'<p class="client-info">Date: ' + cursor.value.date.toLocaleDateString() + '/' + cursor.value.date.toLocaleTimeString() + '</p>' +
-					'<p class="client-info">Bike: ' + cursor.value.amount + '</p>' +
+					'<p class="client-info">Amount: ' + cursor.value.amount + '</p>' +
 					'</div>' +
 					'<div class="rent-info-right">' +
 					'<div class="time">' + outputTime + '</div>' +
@@ -307,7 +289,7 @@ function pad(num, size) {
 
 function computeAmount (){
     var price = 0;
-    var multiplier = document.getElementById('time').value;
+    var multiplier = document.getElementById('time').value/60;
     var type = document.getElementById("tob").value;
     if (type == "Safari"){
         price = 100;
@@ -325,7 +307,7 @@ function computeAmount (){
         price = price * 0.80;
     }
     
-    return totalPrice = price * multiplier;
+    return totalPrice = Math.ceil(price * multiplier);
 }
 
 function earningToday() {

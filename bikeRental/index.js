@@ -70,7 +70,7 @@ addButton.onclick = function () {
 	var time = new Date((document.getElementById('time').value) * 60000 + Date.now());
 	var date = new Date();
 	var tob = document.getElementById('tob').value;
-	var amount = document.getElementById('amount').value;
+    var amount = computeAmount();
 
 	var transaction = db.transaction(["customers"], "readwrite");
 	var store = transaction.objectStore("customers");
@@ -81,6 +81,7 @@ addButton.onclick = function () {
 		date: date,
 		tob: tob,
 		amount: amount
+
 	};
 
 	request = store.add(customer);
@@ -301,6 +302,30 @@ function pad(num, size) {
 	var s = num + "";
 	while (s.length < size) s = "0" + s;
 	return s;
+}
+
+
+function computeAmount (){
+    var price = 0;
+    var multiplier = document.getElementById('time').value;
+    var type = document.getElementById("tob").value;
+    if (type == "Safari"){
+        price = 100;
+    }else if(type == "Chopper" || type == "Quadracycle"){
+        price = 150;
+    }else if (type == "Grandtoor" ){
+        price = 200;
+    }else if (type == "BMX" || type == "Trike1"){
+        price = 50;
+    }else if (type == "Tandem" || type == "Trike2" || type == "Sidecar"){
+        price = 80;
+    }
+    
+    if(document.getElementById('aok').value == "Kiddie"){
+        price = price * 0.80;
+    }
+    
+    return totalPrice = price * multiplier;
 }
 
 function earningToday() {

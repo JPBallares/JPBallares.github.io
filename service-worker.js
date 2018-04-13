@@ -19,6 +19,7 @@ var filesToCache = [
     '/images/placeholder.png',
     '/images/BIKE.jpg',
     '/images/burnham.jpg',
+    '/images/logo.jpg',
     '/js/index.js',
     '/js/jquery.min.js',
     '/app.js',

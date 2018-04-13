@@ -4,7 +4,7 @@ if ('serviceWorker' in navigator) {
 			function (registration) {
 				// Registration was successful
 				console.log('ServiceWorker registration successful with scope: ', registration.scope);
-				
+
 			},
 			function (err) {
 				// registration failed :(
@@ -121,51 +121,54 @@ function showCustomer(e) {
 	index.openCursor().onsuccess = function (e) {
 		var cursor = e.target.result;
 		if (cursor) {
+			if (!(cursor.value.time == 'Returned')) {
+				switch (parseInt(cursor.value.tob)) {
+					case 1:
+						tobDisplay = "Bike A";
+						break;
+					case 2:
+						tobDisplay = "Bike B";
+						break;
+					case 3:
+						tobDisplay = "Bike C";
+						break;
+					case 4:
+						tobDisplay = "Bike D";
+						break;
+					case 5:
+						tobDisplay = "Bike E";
+						break;
+				}
 
+				if (cursor.value.time > 0) {
+					outputTime = Math.floor((cursor.value.time.getTime() - Date.now()) / 60000) + ":" + pad(Math.floor(((cursor.value.time.getTime() - Date.now()) % 60000) / 1000), 2);
+				} else {
+					outputTime = cursor.value.time;
+				}
 
-			switch (parseInt(cursor.value.tob)) {
-				case 1:
-					tobDisplay = "Bike A";
-					break;
-				case 2:
-					tobDisplay = "Bike B";
-					break;
-				case 3:
-					tobDisplay = "Bike C";
-					break;
-				case 4:
-					tobDisplay = "Bike D";
-					break;
-				case 5:
-					tobDisplay = "Bike E";
-					break;
+				content +=
+					'<li class="contentent">' +
+					'<div class="information">' +
+					'<div class="delete">' +
+					'<button name="del" id="delBu" onclick="delRem(this,' + cursor.value.id + ')"></button>' +
+					'<button name="ret" id="retBu" onclick="returnBike(this,' + cursor.value.id + ')">Return</button>' +
+					'<div class="rent-info">' +
+					'<div class="rent-info-left">' +
+					'<p class="client-info">Name: ' + cursor.value.name + '</p>' +
+					'<p class="client-info">Type: ' + cursor.value.aok + '</p>' +
+					'<p class="client-info">Bike: ' + tobDisplay + '</p>' +
+					'<p class="client-info">Date: ' + cursor.value.date.toLocaleDateString() + '/' + cursor.value.date.toLocaleTimeString() + '</p>' +
+					'</div>' +
+					'<div class="rent-info-right">' +
+					'<div class="time">' + outputTime + '</div>' +
+					'</div>' +
+					'</div>' +
+					'</div>' +
+					'</div>' +
+					'</li>';
+
 			}
 
-			if (cursor.value.time > 0) {
-				outputTime = Math.floor((cursor.value.time.getTime() - Date.now()) / 60000) + ":" + pad(Math.floor(((cursor.value.time.getTime() - Date.now()) % 60000) / 1000), 2);
-			} else {
-				outputTime = cursor.value.time;
-			}
-
-			content +=
-				'<li class="contentent">' +
-				'<div class="information">' +
-				'<div class="delete">' +
-				'<button name="del" id="delBu" onclick="delRem(this,' + cursor.value.id + ')"></button>' +
-				'<div class="rent-info">' +
-				'<div class="rent-info-left">' +
-				'<p class="client-info">Name: ' + cursor.value.name + '</p>' +
-				'<p class="client-info">Type: ' + cursor.value.aok + '</p>' +
-				'<p class="client-info">Bike: ' + tobDisplay + '</p>' +
-				'<p class="client-info">Date: ' + cursor.value.date.toLocaleDateString() + '/' + cursor.value.date.toLocaleTimeString() + '</p>' +
-				'</div>' +
-				'<div class="rent-info-right">' +
-				'<div class="time">' + outputTime + '</div>' +
-				'</div>' +
-				'</div>' +
-				'</div>' +
-				'</div>' +
-				'</li>';
 
 			cursor.continue();
 		}
@@ -188,14 +191,45 @@ function delRem(e, elements) {
 	var request = store.delete(elements);
 
 	request.onsuccess = function (e) {
-		console.log("Deleted " + elements);
+		console.log("Deleted customer " + elements);
+		alert("Deleted customer " + elements);
 	}
 
 	request.onerror = function (e) {
-		console.log("Failed to delete " + elements);
+		console.log("Failed to delete customer " + elements);
+		alert("Failed to delete customer" + elements);
 	}
 
 }
+
+function returnBike(e, elements) {
+	var transaction = db.transaction(["customers"], "readwrite");
+	var store = transaction.objectStore("customers");
+
+	store.openCursor().onsuccess = function (e) {
+		var cursor = e.target.result;
+		if (cursor) {
+			var updateData = cursor.value;
+
+			if (updateData.id == elements) {
+				updateData.time = "Returned";
+				var request = cursor.update(updateData);
+				request.onsuccess = function (e) {
+					console.log("Returned " + elements);
+					alert("Bike Returned by customer " + elements);
+				}
+			}
+
+			cursor.continue();
+
+		}
+
+		showCustomer();
+
+
+	}
+}
+
 //timer and push notification
 function countDownTimer(e) {
 	var transaction = db.transaction(["customers"], "readwrite");
@@ -224,6 +258,8 @@ function countDownTimer(e) {
 
 	};
 }
+
+
 
 function rentBike() {
 

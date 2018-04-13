@@ -3,7 +3,7 @@ var cacheName = 'bikeRental-PWA';
 //pakilagay nalang ung mga kailangan nyong image para maicache
 var filesToCache = [
     '/',
-    '/bikeRental',
+    '/bikeRental/',
     '/bikeRental/images/add.png',
     '/bikeRental/images/delete.png',
     '/bikeRental/images/logo.png',
@@ -19,7 +19,7 @@ var filesToCache = [
     '/images/placeholder.png',
     '/images/BIKE.jpg',
     '/images/burnham.jpg',
-    '/images/logo.jpg',
+    '/images/logo.png',
     '/images/iconbike.jpg',
     '/images/iconsearch.jpg',
     '/images/love.jpg',

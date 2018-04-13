@@ -41,6 +41,9 @@ request.onupgradeneeded = function (e) {
 		os.createIndex('date', 'date', {
 			unique: false
 		});
+        os.createIndex('amount', 'amount', {
+			unique: false
+		});
 	}
 };
 

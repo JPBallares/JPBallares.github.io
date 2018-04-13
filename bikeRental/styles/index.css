@@ -61,7 +61,7 @@ body {
 	border-radius: 13px;
 	height: 30px;
 	width: 30px;
-	background-color: rgb(63, 81, 181, 0.6);
+	background-color: rgba(63, 81, 181, 0.6);
 }
 
 [id^=delBu] {
@@ -70,7 +70,7 @@ body {
 }
 
 [id^=delBu]:hover {
-	background-color: rgb(63, 81, 181, 0.8);
+	background-color: rgba(63, 81, 181, 0.8);
 	cursor: pointer;
 }
 
@@ -89,7 +89,6 @@ body {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
 }
 
@@ -107,7 +106,7 @@ body {
 
 .close {
 	background-image: url(../images/delete.png);
-	background-color: rgb(63, 81, 181, 0.6);
+	background-color: rgba(63, 81, 181, 0.6);
 	background-size: contain; 
 	background-repeat: no-repeat;
 	border-radius: 13px;
@@ -118,13 +117,13 @@ body {
 
 .close:hover,
 .close:focus {
-	background-color: rgb(63, 81, 181, 0.8);
+	background-color: rgba(63, 81, 181, 0.8);
 	cursor: pointer;
 }
 
 .add {
 	background-image: url(../images/add.png);
-	background-color: rgb(63, 81, 181, 0.6);
+	background-color: rgba(63, 81, 181, 0.6);
 	background-size: contain; 
 	background-repeat: no-repeat;
 	border-radius: 13px;
@@ -136,7 +135,7 @@ body {
 
 .add:hover,
 .add:focus {
-	background-color: rgb(63, 81, 181, 0.8);
+	background-color: rgba(63, 81, 181, 0.8);
 	cursor: pointer;
 }
 

@@ -13,7 +13,7 @@ self.addEventListener('notificationclick', function (e) {
 
         for (let i = 0; i < clientList.length; i++) {
             const client = clientList[i];
-            if (client.url === '/') {
+            if (client.url === '/bikeRental/') {
                 matchingClient = client;
                 break;
             }
@@ -21,7 +21,7 @@ self.addEventListener('notificationclick', function (e) {
         if (matchingClient) {
             return matchingClient.focus();
         } else {
-            return clients.openWindow('/');
+            return clients.openWindow('/bikeRental/');
         }
     }));
 });

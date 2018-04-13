@@ -235,6 +235,15 @@ a.button:hover {
   color: #f1f2f3;
 }
 
+.burnham {
+  background-color: #808080;
+}
+
+.burnham img {
+  border-style: dashed;
+  border-color: white;
+}
+
 footer {
   color: #7f8c8d;
   background: #111;

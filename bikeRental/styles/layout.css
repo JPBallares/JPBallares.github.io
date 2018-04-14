@@ -131,7 +131,7 @@ ol {
 	}
 }
 
-@media screen and (max-height: 680px),screen and (max-width: 780px)  {
+@media screen and (max-height: 660px),screen and (max-width: 760px)  {
 	.rent-info {
 		flex-flow: column;
 	}

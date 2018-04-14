@@ -4,7 +4,6 @@ if ('serviceWorker' in navigator) {
 			function (registration) {
 				// Registration was successful
 				console.log('ServiceWorker registration successful with scope: ', registration.scope);
-				Notification.requestPermission();
 
 			},
 			function (err) {
@@ -14,9 +13,6 @@ if ('serviceWorker' in navigator) {
 
 	});
 }
-
-// timer = null;
-// window.onload = rentBike();
 Notification.requestPermission();
 timer = null;
 rentBike();
@@ -71,7 +67,6 @@ var span = document.getElementsByClassName("close")[0];
 addButton.onclick = function () {
 	var name = document.getElementById('name').value;
 	var aok = document.getElementById('aok').value;
-	var time = new Date((document.getElementById('time').value)*60000 + Date.now());
 	var time = new Date((document.getElementById('time').value) * 60000 + Date.now());
 	var date = new Date();
 	var tob = document.getElementById('tob').value;
@@ -84,9 +79,9 @@ addButton.onclick = function () {
 		aok: aok,
 		time: time,
 		date: date,
-		tob: tob
 		tob: tob,
 		amount: amount
+
 	};
 
 	request = store.add(customer);
@@ -113,155 +108,6 @@ span.onclick = function () {
 	modal.style.display = "none";
 }
 
-window.onclick = function (event) {
-	if (event.target == modal) {
-		modal.style.display = "none";
-	}
-}
-
-//showcustomer
-function showCustomer(e){
-	var content = '';
-	var transaction = db.transaction(["customers"], "readonly");
-
-    var store = transaction.objectStore("customers");
-    var index = store.index('name');
-	
-	index.openCursor().onsuccess = function (e) {
-        var cursor = e.target.result;
-        if (cursor) {
-
-	var tobDisplay;
-	switch (cursor.value.tob) {
-		case 1:
-			tobDisplay = "Bike A";
-			break;
-		case 2:
-			tobDisplay = "Bike B";
-			break;
-		case 3:
-			tobDisplay = "Bike C";
-			break;
-		case 4:
-			tobDisplay = "Bike D";
-			break;
-		case 5:
-			tobDisplay = "Bike E";
-			break;
-	}
-	var outputTime;
-	if (cursor.value.time > 0){
-		outputTime = Math.floor((cursor.value.time.getTime() - Date.now())/60000) + ":" + Math.floor(((cursor.value.time.getTime() - Date.now())%60000)/1000);
-	} else {
-		outputTime = cursor.value.time;
-	}
-	
-	content +=
-		'<li class="contentent">' +
-		'<div class="information">' +
-		'<div class="delete">' +
-		'<button name="del" id="delBu" onclick="delRem(this,'+cursor.value.id+')"></button>' +
-		'<div class="rent-info">' +
-		'<div class="rent-info-left">' +
-		'<p class="client-info">Name: ' + cursor.value.name + '</p>' +
-		'<p class="client-info">Type: ' + cursor.value.aok + '</p>' +
-		'<p class="client-info">Bike: ' + cursor.value.tob + '</p>' +
-		'<p class="client-info">Date: ' + cursor.value.date.toLocaleDateString() + '/' + cursor.value.date.toLocaleTimeString() + '</p>' +
-		'</div>' +
-		'<div class="rent-info-right">' +
-		'<div class="time">' + outputTime + '</div>' +
-		'</div>' +
-		'</div>' +
-		'</div>' +
-		'</div>' +
-		'</li>';
-		
-	cursor.continue();
-	}
-		
-	if (document.getElementById('custlist')){
-		document.getElementById('custlist').innerHTML = content;
-		console.log(content);
-	}
-		
-	};
-
-}
-
-function delRem(e, elements) {
-	e.parentNode.parentNode.parentNode.removeChild(e.parentNode.parentNode);
-	var transaction = db.transaction(["customers"], "readwrite");
-    var store = transaction.objectStore("customers");
-
-    var request = store.delete(elements);
-
-    request.onsuccess = function (e) {
-        console.log("Deleted " + elements);
-    }
-
-    request.onerror = function (e) {
-        console.log("Failed to delete " + elements);
-    }
-	
-}
-//timer and push notification
-// function countDownTimer(e) {
-//     var transaction = db.transaction(["customers"], "readwrite");
-//     var store = transaction.objectStore("customers");
-
-//     store.openCursor().onsuccess = function (e) {
-//         var cursor = e.target.result;
-//         if (cursor) {
-//             var updateData = cursor.value;
-//             if (updateData.time > 0){
-//                 if ((updateData.time.getTime()) <= Date.now()) {
-//                     updateData.time = "Not yet returned";
-//                     pushNotification(updateData.name);
-//                     var request = cursor.update(updateData);
-//                     request.onsuccess = function () {
-//                         console.log('Success!');
-//                     };
-//                 } 
-//             }
-            
-//             cursor.continue();
-
-//         }
-
-//         showCustomers();
-
-//     };
-// }
-
-// function rentBike() {
-    
-//     if (!timer){
-//         timer = setInterval('countDownTimer()', 1000);
-//     }
-    
-// }
-
-
-
-// function pushNotification() {
-//     Notification.requestPermission(function (result) {
-//         if (result === 'granted') {
-//             navigator.serviceWorker.ready.then(function (registration) {
-//                 var data = {
-//                     msg: "Time out",
-//                     details: "One of the customer is already out of time"
-//                 }
-    
-    
-//                 registration.showNotification("Baguio Bike Rental", {
-//                     body: data.msg + "\n" + data.details,
-//                     icon: "/images/icons/icon-512x512.png",
-//                     tag: "TIME-OUT"
-//                 });
-//             });
-//         }
-//     });
-// }
 window.onclick = function (event) {
 	if (event.target == modal) {
 		modal.style.display = "none";

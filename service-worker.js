@@ -13,8 +13,6 @@ var filesToCache = [
     '/bikeRental/styles/layout.css',
     '/bikeRental/index.html',
     '/bikeRental/index.js',
-    '/bikeRental/bikedetails.js',
-    '/bikeRental/sw.js',
     '/css/style.css',
     '/images/placeholder.png',
     '/images/burnham.jpg',
@@ -90,19 +88,23 @@ self.addEventListener('notificationclick', function (e) {
     // This looks to see if the current is already open and
     // focuses if it is
     e.waitUntil(clients.matchAll({
-        type: "window"
+        type: "window",
+        includeUncontrolled: true
     }).then(function (clientList) {
-        let clientMatched = null;
 
-        for (var i = 0; i < clientList.length; i++) {
-            var client = clientList[i];
-            if (client.url === '/indexedDB/') {
-                return client.focus();
+        let matchingClient = null;
+
+        for (let i = 0; i < clientList.length; i++) {
+            const client = clientList[i];
+            if (client.url === '/bikeRental/') {
+                matchingClient = client;
+                break;
             }
         }
-        if (clients.openWindow) {
-            return clients.openWindow('/indexedDB/');
+        if (matchingClient) {
+            return matchingClient.focus();
+        } else {
+            return clients.openWindow('/bikeRental/');
         }
-
     }));
 });

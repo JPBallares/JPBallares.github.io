@@ -45,6 +45,22 @@ body {
 	align-items: center;
 }
 
+.earning {
+	height: 100%;
+	padding: 0 1em 0 1em;
+	float: right;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+.earning button:hover{
+	color: white;
+	cursor: pointer;
+	font-weight: bold;
+}
+
 #pluBu {
 	background-image: url(../images/add.png);
 	background-size: contain; 
@@ -61,7 +77,18 @@ body {
 	border-radius: 13px;
 	height: 30px;
 	width: 30px;
-	background-color: rgb(63, 81, 181, 0.6);
+	background-color: rgba(63, 81, 181, 0.6);
+}
+
+.delete button#retBu{
+	font-size: 17px;
+	margin-right: 10px;
+	width: auto;
+}
+
+.delete button#retBu:hover{
+	background-color: rgba(63, 81, 181, 0.8);
+	cursor: pointer;
 }
 
 [id^=delBu] {
@@ -89,7 +116,6 @@ body {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
 }
 
@@ -180,6 +206,7 @@ body {
 	width: auto;
 	padding: 0 15px 0 15px;
 	font-size: 18vw; 
+	font-size: 9vw; 
 }
 
 .client-info {

@@ -31,6 +31,12 @@
 			<div id="g-button">
 				<button id="pluBu"></button>
 			</div>
+			<div class="earning">
+				<button id="earningT" onclick="earningToday()">T</button>
+			</div>
+			<div class="earning">
+				<button id="earningM" onclick="earningMonth()">M</button>
+			</div>
 		</div>
 
 		<div id="modal-0" class="modal">
@@ -55,25 +61,33 @@
 					<div class="form-group">
 						<label class="form_field">Duration</label>
 						<select id="time" class="form-control">
+							<option value="0.5">Demo</option>
 							<option value="30">30 Minutes</option>
 							<option value="60">1 Hour</option>
 							<option value="90">1 Hr 30 Min</option>
 							<option value="120">2 Hours</option>
-							<option value="120">2 Hrs 30 Min</option>
-							<option value="120">3 Hours</option>
+							<option value="150">2 Hrs 30 Min</option>
+							<option value="180">3 Hours</option>
 						</select>
 						<!-- <input type="text" id = 'minutes' class="form-control" placeholder="Minutes"> -->
 					</div>
 					<div class="form-group">
 						<label class="form_field">Type of Bike</label>
 						<select id='tob' class="form-control">
-							<option value="1">Bike A</option>
-							<option value="2">Bike B</option>
-							<option value="3">Bike C</option>
-							<option value="4">Bike D</option>
-							<option value="5">Bike E</option>
+							<option value="Safari">Safari|Php 100/hr</option>
+							<option value="Chopper">Chopper|Php 150/hr</option>
+							<option value="Quadracycle">Quadracycle|Php 150/hr</option>
+							<option value="Grandtoor">Grandtoor|Php 200/hr</option>
+							<option value="BMX">BMX|Php 50/hr</option>
+							<option value="Trike1">Trike1|Php 50/hr</option>
+							<option value="Trike2">Trike2|Php 80/hr</option>
+							<option value="Tandem">Tandem|Php 80/hr</option>
 						</select>
 					</div>
+					<!-- <div class="form-group">
+						<label class="form_field">Amount</label>
+						<input type="text" id='amount' class="form-control" placeholder="Amount">
+					</div> -->
 				</form>
 
 			</div>

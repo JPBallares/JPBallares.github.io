@@ -2,52 +2,55 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="theme-color" content="#2196f3">
-    <title>Baguio Bike Rental</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="images/icons/icon-512x512.png">
-    <link rel="manifest" href="manifest.json">
-    <script src="app.js" async></script>
-
-    <link rel="stylesheet" href="css/style.css"> 
+  <meta charset="UTF-8">
+  <title>Burnham bike rental</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" type="image/png" href="images/icons/icon-512x512.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="app.js" async></script>
 </head>
 
 <body>
-    <header> </header>
-    <div id="container">
-        <div class="navT">
-            <div class="icon"> </div>
-        </div>
+
+  <header>
+    <div id="logo">
+      <img src="./images/logo.png" alt="logo">
     </div>
-    <div id="menu">
-        <ul>
-            <li><a href="index.html">Home<span class="space"></span></a></li>
-            <li><a href="bike.html">Bikes<span class="space"></span></a></li>
-            <li><a href="bikeRental/index.html">Bike Management<span class="space"></span></a></li>
-            <li><a href="about.html">About<span class="space"></span></a></li>
-        </ul>
+    <div id="title">
+      Baguio Bike Rental
     </div>
-    <div class='content'>
-        <div id="first">
-            <h1> Burnham Park</h1>
-            <h2>The Heart of Baguio City</h2> <img class="burnham" src="images/burnham.jpg" width="80%"> </div>
-        <div id="second">
-            <h1>Ride a Bike at Burnham Park</h1>
-            <h2>ENJOY         RELAX         LOVE</h2>
-            <p>Aside from its nippy climate, the city’s charm lies in its many offerings—there always seems to be something new in every visit!Spend your vacation in Burnham Park and experience more than just sightseeing and selfies in the summer capital.</p>
-            <div id="bar"> <img class="bi" src="images/BIKE.jpg"> </div>
-        </div>
-        <div id="third">
-            <h2></h2>
-            <h5></h5>
-            <div id="map-canvas"></div>
-        </div>
+    <input type="checkbox" class="trigger" id="mainNavButton">
+    <label for="mainNavButton"> Menu
+      <div class="burger">
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+      </div>
+    </label>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="bike.html">Bikes</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="./bikeRental/index.html">Bike management</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div>
+      <h1> Burnham Park</h1>
+      <h2>The Heart of Baguio City</h2> <img src="images/burnham.jpg" width="80%"> </div>
     </div>
-    
-    <script src='js/jquery.min.js'></script>
-    <script src="js/index.js"></script>
+    <div class="burnham">
+      <h1>Ride a Bike at Burnham Park</h1>
+      <h2>ENJOY RELAX LOVE</h2>
+      <p>Aside from its nippy climate, the city’s charm lies in its many offerings—there always seems to be something new in every visit!Spend your vacation in Burnham Park and experience more than just sightseeing and selfies in the summer capital.</p>
+      <img src="./images/bike.jpg" width="40%"> </div>
+    </div>
+  </main>
+  <footer>Baguio City, Philippines 2600, (+63)977-826-4922 &copy; Webtechnology Copyright 2018</footer>
 </body>
 
 </html>

@@ -1,19 +1,49 @@
-window.onload = function () {
-    Notification.requestPermission();
-};
-
 var cacheName = 'bikeRental-PWA';
 
+//pakilagay nalang ung mga kailangan nyong image para maicache
 var filesToCache = [
     '/',
+    '/bikeRental/',
+    '/bikeRental/images/add.png',
+    '/bikeRental/images/delete.png',
+    '/bikeRental/images/logo.png',
+    '/bikeRental/styles/fonts/JosefinSans-Regular.ttf',
+    '/bikeRental/styles/fonts/ProximaNova-Regular.ttf',
+    '/bikeRental/styles/index.css',
+    '/bikeRental/styles/layout.css',
+    '/bikeRental/index.html',
+    '/bikeRental/index.js',
+    '/bikeRental/bikedetails.js',
+    '/bikeRental/sw.js',
+    '/css/style.css',
+    '/images/placeholder.png',
+    '/images/burnham.jpg',
+    '/images/logo.png',
+    '/images/iconbike.jpg',
+    '/images/iconsearch.jpg',
+    '/images/love.jpg',
+    '/images/bikkeee.jpg',
+    '/js/index.js',
+    '/js/jquery.min.js',
     '/app.js',
     '/index.html',
     '/manifest.json',
-    '/images/add.png',
-    '/images/delete.png',
-    '/images/logo.png',
-    '/users.txt',
-    '/offline.html'
+    '/offline.html',
+    '/service-worker.js',
+	'/images/bike.jpg',
+	'/images/bikes/bmx.jpg',
+	'/images/bikes/chopper.jpg',
+	'/images/bikes/fatbike.jpg',
+	'/images/bikes/grandtour.jpg',
+	'/images/bikes/mtbike.jpg',
+	'/images/bikes/quadracycle.jpg',
+	'/images/bikes/safari.jpg',
+	'/images/bikes/sidecar.jpg',
+	'/images/bikes/tandem.jpg',
+	'/images/bikes/trike1seater.jpg',
+	'/images/bikes/trike2seater.jpg',
+	'bike.html',
+	
 ];
 
 self.addEventListener('install', function (e) {

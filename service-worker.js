@@ -13,8 +13,6 @@ var filesToCache = [
     '/bikeRental/styles/layout.css',
     '/bikeRental/index.html',
     '/bikeRental/index.js',
-    '/bikeRental/bikedetails.js',
-    '/bikeRental/sw.js',
     '/css/style.css',
     '/images/placeholder.png',
     '/images/burnham.jpg',

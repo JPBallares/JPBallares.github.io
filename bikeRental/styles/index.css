@@ -13,6 +13,12 @@ body {
 	align-items: center;
 }
 
+
+#logo a {
+	height: inherit;
+	width: auto;
+}
+
 #logo img {
 	height: inherit;
 	width: auto;

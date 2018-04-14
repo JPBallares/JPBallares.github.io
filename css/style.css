@@ -17,7 +17,21 @@ body {
   text-align: center;
   font-family: 'Roboto', sans-serif;
 }
+blockquote p {
+  padding: 0px 15px 0px 0px;
+  font-size: 1.2em;    
+  float: left;
+}
 
+blockquote {
+  padding: 20px;
+  font-size: 1.8em;    
+}
+
+cite {
+  font-size: 1.2em;
+  float: right;    
+}
 #logo img {
   width: 60px;
   height: auto;
@@ -235,13 +249,211 @@ a.button:hover {
   color: #f1f2f3;
 }
 
-.burnham {
-  background-color: #808080;
+
+/* first */
+
+.container {
+  display: flex;
+  padding: 0.5em;
 }
 
-.burnham img {
-  border-style: dashed;
-  border-color: white;
+.unequal-column {
+  padding-top: 2em;
+  margin-left: 100px;
+}
+
+.unequal-column h2 {
+  text-align: center;
+}
+
+.item {
+  flex: 1;
+  align-self: flex-start;
+  margin: .6em;
+  padding-right: 0px;
+}
+
+.item:first-child {
+  flex: 1 1 0%;
+}
+
+.item:nth-child(2) {
+  padding: 0px;
+}
+
+#container {
+  -webkit-transition: all 0.25s;
+  position: absolute;
+  width: 30px;
+  height: 1px;
+  left: 15px;
+  top: 0px;
+  background-color: white;
+}
+
+.content {
+  width: 100%;
+  font-size: 20px;
+  font-family: sans-serif;
+  font-weight: 100;
+  -webkit-transition: top 0.5s;
+  position: absolute;
+  top: 65px;
+  margin: 0 auto;
+}
+
+#first h1 {
+  font-size: 3em;
+  text-transform: uppercase;
+  text-align: center;
+    padding-bottom: 30px;
+}
+
+#first h2 {
+    font-size: 1em;
+    text-transform: uppercase;
+    margin-top: -25px;
+    margin-left: 10px;
+    font-weight: 400;
+    letter-spacing: 0.7em;
+    }
+#first h1,#first h2{
+    text-align: center;
+}
+#first p{
+    text-align: left;
+}
+/* second */
+#second{
+    padding: 10px 0 10px 0;
+}
+#second h1{
+    padding: 30px;
+}
+#second h2{
+    font-size: 1em;
+    text-transform: uppercase;
+    margin-top: -25px;
+    margin-left: 10px;
+    font-weight: 400;
+    letter-spacing: 0.7em;
+    }
+#second h1,#second h2, #second p{
+    text-align: center;
+}
+#bar img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+/* third */
+
+.col {
+  width: 33.333%;
+  height: 450px;
+  float: left;
+  text-align: center;
+  background-color: #999;
+    padding-top: 50px;
+}
+
+.icon-wrap {
+  background: #f0f0f0 url(http://mmhimages.fnistools.com/images/RECos/1252/img/box-bg.png);
+  width: 134px;
+  height: 134px;
+  border-radius: 81px;
+  padding: 11px;
+  margin: 0 auto;
+  z-index: 500;
+  overflow: hidden;
+  display: block;
+  position: relative;
+
+
+}
+
+.icon-border {
+  border: 3px solid #1fb25a;
+  border-radius: 81px;
+  width: 129px;
+  height: 129px;
+}
+
+.icon-content {
+  background: #fff;
+  border-radius: 81px;
+  width: 129px;
+  height: 129px;
+}
+
+
+.box-wrap {
+  background: #f0f0f0 url(http://mmhimages.fnistools.com/images/RECos/1252/img/box-bg.png);
+  width: 300px;
+  height: 300px;
+  padding: 11px;
+  margin: -83px auto 0;
+  z-index: 1;
+  display: block;
+  position: relative;
+}
+
+.box-content {
+  background: #fff;
+  width: 260px;
+  height: 220px;
+  padding: 80px 20px 0;
+}
+
+.box-content h3 {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.box-content p {
+  text-align: center;
+  color: #737373;
+}
+.icons{
+    width: 100px;
+    padding-top: 15px;
+}
+
+@media only screen and (max-width:768px) {
+  .col1 {
+    width: 100%;
+  }
+  .col2 {
+    width: 100%;
+  }
+  .col3 {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width:480px) {
+  .col {
+    float: none;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:600px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+  .container {
+    flex-flow: column wrap;
+  }
 }
 
 footer {
